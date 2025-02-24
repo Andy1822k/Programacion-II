@@ -4,15 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Main {
-    private static boolean mostrarLinea = true; // Mover la variable fuera del JPanel
+    private static boolean mostrarLinea = true; 
 
     public static void main(String[] args) {
         // Crear puntos para la línea y el círculo
-        Punto p1 = new Punto(2, 2);
-        Punto p2 = new Punto(8, 8);
-        Punto centroCirculo = new Punto(5, 5);
-        float radio = 3;
-
+        Punto p1 = new Punto(0, 0);
+        Punto p2 = new Punto(5, 5);
+        Punto centroCirculo = new Punto(0, 0);
+        float radio = 5;
         // Crear instancias de Linea y Circulo
         Linea linea = new Linea(p1, p2);
         Circulo circulo = new Circulo(centroCirculo, radio);
@@ -28,9 +27,9 @@ public class Main {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 if (mostrarLinea) {
-                    linea.dibujaLinea(g, getHeight()); // Dibuja la línea
+                    linea.dibujaLinea(g, getHeight(), getWidth()); // Dibuja la línea
                 } else {
-                    circulo.dibujaCirculo(g, getHeight()); // Dibuja el círculo
+                    circulo.dibujaCirculo(g, getHeight(), getWidth()); // Dibuja el círculo
                 }
             }
         };
@@ -40,11 +39,11 @@ public class Main {
         frame.setVisible(true);
 
         // Usar un Timer para alternar entre la línea y el círculo
-        Timer timer = new Timer(1000, new ActionListener() { // 3000 ms = 3 segundos
+        Timer timer = new Timer(1000, new ActionListener() { 
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarLinea = !mostrarLinea; // Alternar entre línea y círculo
-                panel.repaint(); // Redibujar el panel
+                mostrarLinea = !mostrarLinea; 
+                panel.repaint(); 
                 System.out.println(mostrarLinea ? "Mostrando linea" : "Mostrando circulo"); // Depuración
             }
         });
