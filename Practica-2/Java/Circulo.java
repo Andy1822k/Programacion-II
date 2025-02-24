@@ -1,5 +1,3 @@
-package practica2;
-
 import java.awt.*;
 
 public class Circulo {
