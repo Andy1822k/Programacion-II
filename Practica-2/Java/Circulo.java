@@ -1,3 +1,5 @@
+package practica2;
+
 import java.awt.*;
 
 public class Circulo {
@@ -9,19 +11,22 @@ public class Circulo {
         this.radio = r;
     }
 
-    public void dibujaCirculo(Graphics g, int height) {
-        Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(Color.BLUE);
+    public void dibujaCirculo(Graphics g, int height, int width) {
+    Graphics2D g2 = (Graphics2D) g;
+    g2.setColor(Color.BLUE);
 
-        // Ajustar las coordenadas y el tamaño para que el círculo sea visible
-        int x = (int) (centro.x * 40);
-        int y = (int) (centro.y * 40);
-        int radioPix = (int) (radio * 40);
+    int escala = 40; 
+    int radioPix = (int) (radio * escala);
 
-        // Dibujar el círculo
-        g2.drawOval(x - radioPix, height - y - radioPix, 2 * radioPix, 2 * radioPix);
-        System.out.println("Dibujando circulo en: (" + (x - radioPix) + ", " + (height - y - radioPix) + ")"); // Depuración
-    }
+    // Centrar en el JPanel
+    int x = width / 2;  
+    int y = height / 2; 
+
+    // Dibujar el círculo
+    g2.drawOval(x - radioPix, y - radioPix, 2 * radioPix, 2 * radioPix);
+    System.out.println("Dibujando circulo en: (" + (x - radioPix) + ", " + (y - radioPix) + ")");
+}
+
 
     @Override
     public String toString() {
